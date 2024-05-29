@@ -1,0 +1,53 @@
+{
+    "name": "riley19280/persistent-seeders",
+    "description": "Persist data in a centralized and elegant way",
+    "version": "0.1.0",
+    "type": "library",
+    "require": {
+        "illuminate/conditionable": "^10|^11",
+        "illuminate/macroable": "^10|^11",
+        "illuminate/database": "^10|^11"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.0",
+        "spatie/invade": "^1.0",
+        "mockery/mockery": "^1.6",
+        "nunomaduro/collision": "^7|^8",
+        "pestphp/pest": "^2.9",
+        "pestphp/pest-plugin-arch": "^2.0",
+        "phpstan/extension-installer": "^1.1",
+        "phpstan/phpstan-deprecation-rules": "^1.0",
+        "phpstan/phpstan-phpunit": "^1.0",
+        "phpstan/phpstan": "^1.10",
+        "orchestra/testbench": "^9"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "PersistentSeeders\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PersistentSeeders\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "phpstan": "./vendor/bin/phpstan analyse --memory-limit=2G",
+        "test": "./vendor/bin/pest",
+        "style": "./vendor/bin/pint"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "PersistentSeeders\\PersistentSeedersServiceProvider"
+            ]
+        }
+    }
+}
