@@ -15,10 +15,10 @@ class PersistentSeedersServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__ . '/config/persistent_seeders.php' => config_path('persistent_seeders.php'),
-        ]);
+        ], 'persistent-seeder-config');
 
         $this->publishesMigrations([
-            __DIR__ . '/../database/migrations' => database_path('migrations'),
-        ]);
+            __DIR__ . '/migrations' => database_path('migrations'),
+        ], 'persistent-seeder-migrations');
     }
 }

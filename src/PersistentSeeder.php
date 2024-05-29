@@ -2,11 +2,12 @@
 
 namespace PersistentSeeders;
 
+use Illuminate\Database\Seeder;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use ReflectionException;
 
-class PersistentSeeder extends \Illuminate\Database\Seeder
+class PersistentSeeder extends Seeder
 {
     public function run(): void
     {
@@ -20,6 +21,10 @@ class PersistentSeeder extends \Illuminate\Database\Seeder
     private function runSeeder(SeederId $seederId): void
     {
         try {
+            if ($this->command) {
+                $this->command->warn("  Running persistent seeder $seederId->name ($seederId->id)");
+            }
+
             $this->{$seederId->functionName}();
         } finally {
             $date = Carbon::now();
